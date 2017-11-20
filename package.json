@@ -32,6 +32,12 @@
                     }
                 }
             }
+        ],
+        "keybindings":[
+            {
+                "command": "shaden.patch",
+                "key": "ctrl+alt+p"
+            }
         ]
     },
     "scripts": {
