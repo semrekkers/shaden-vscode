@@ -17,7 +17,7 @@ export function activate(context: vscode.ExtensionContext) {
             method: 'POST'
         };
 
-        http.get(options, (res: http.IncomingMessage) => {
+        http.request(options, (res: http.IncomingMessage) => {
             var data: string = '';
 
             res.on('data', (chunk: string) => {
@@ -30,7 +30,6 @@ export function activate(context: vscode.ExtensionContext) {
             });
         })
         .end(selection);
-
     });
 
     context.subscriptions.push(disposable);
