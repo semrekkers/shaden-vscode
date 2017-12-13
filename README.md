@@ -1,6 +1,6 @@
 # Shaden for Visual Studio Code
 
-Interact with [Shaden](https://github.com/brettbuddin/shaden) from VS Code.
+Interact with [Shaden](https://github.com/brettbuddin/shaden) from VS Code. Pull requests are welcome!
 
 ## Features
 
