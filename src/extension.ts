@@ -3,6 +3,8 @@
 import * as vscode from 'vscode';
 import * as http from 'http';
 
+let outputChannel = vscode.window.createOutputChannel('Shaden');
+
 export function activate(context: vscode.ExtensionContext) {
     let disposable = vscode.commands.registerCommand('shaden.patch', () => {
         const port = vscode.workspace.getConfiguration('shaden')['port'];
@@ -25,9 +27,16 @@ export function activate(context: vscode.ExtensionContext) {
             });
             res.on('end', () => {
                 if (data != 'OK') {
-                    vscode.window.showErrorMessage(data);
+                    vscode.window.showErrorMessage('Shaden: Error while evaluating script');
+                    outputChannel.appendLine('Error: ' + data);
+                } else {
+                    outputChannel.appendLine('Info:  Successfully evaluated script')
                 }
             });
+        })
+        .on('error', (err) => {
+            vscode.window.showErrorMessage("Shaden: Couldn't process request");
+            outputChannel.appendLine(err + ', is Shaden running?');
         })
         .end(selection);
     });
