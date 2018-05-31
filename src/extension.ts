@@ -10,6 +10,9 @@ export function activate(context: vscode.ExtensionContext) {
         const port = vscode.workspace.getConfiguration('shaden')['port'];
 
         const editor = vscode.window.activeTextEditor;
+        if (editor == null) {
+            return;
+        }
         const selection = editor.document.getText(editor.selection);
 
         let options: http.RequestOptions = {
